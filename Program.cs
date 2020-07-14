@@ -27,12 +27,6 @@ namespace Нахождение_студентов_из_групп_по_номе�
             }
             var allGroupNumbers = from a in students
                                   select a.GroupNumb;
-            Console.WriteLine("Список имеющихся групп:");
-            foreach (int i in allGroupNumbers.Distinct())
-            {
-                Console.Write($" {i}");
-            }
-
             Console.WriteLine("\n Введите группу, по которой вы начнёте поиск: ");
             var addGroupNumb = Convert.ToInt32(Console.ReadLine());
             foreach (int i in allGroupNumbers.Distinct())
