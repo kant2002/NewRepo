@@ -11,7 +11,7 @@ namespace Нахождение_студентов_из_групп_по_номе�
     }
     class Program
     {
-        static void Main(string[] args)
+        static List<Student> GetStudents()
         {
             List<Student> students = new List<Student>();
             students.Add(new Student { Name = "Ilya", GroupNumb = 1 });
@@ -21,11 +21,16 @@ namespace Нахождение_студентов_из_групп_по_номе�
             students.Add(new Student { Name = "baibek", GroupNumb = 99 });
             students.Add(new Student { Name = "Lev", GroupNumb = 3 });
 
-            foreach (Student s in students)
+            return students;
+        }
+        static void Main(string[] args)
+        {
+            var getStudens = GetStudents();
+            foreach (Student s in getStudens)
             {
                 Console.WriteLine($"Студент : {s.Name}, Группа: {s.GroupNumb}");
             }
-            var allGroupNumbers = from a in students
+            var allGroupNumbers = from a in getStudens
                                   select a.GroupNumb;
             Console.WriteLine("\n Введите группу, по которой вы начнёте поиск: ");
             var addGroupNumb = Convert.ToInt32(Console.ReadLine());
@@ -36,9 +41,9 @@ namespace Нахождение_студентов_из_групп_по_номе�
                     Console.WriteLine("Введите букву для определения поиска студента: ");
                     var addFirstStringOfName = Console.ReadLine();
 
-                    foreach (Student s in students)
+                    foreach (Student s in getStudens)
                     {
-                        
+
                         var firstStringItem = s.Name.FirstOrDefault().ToString();
                         if (firstStringItem == addFirstStringOfName)
                         {
@@ -46,7 +51,7 @@ namespace Нахождение_студентов_из_групп_по_номе�
                         }
                     }
                 }
-                else
+                else if (addGroupNumb != i)
                 {
                     Console.WriteLine("Такой группы не существует");
                     break;
