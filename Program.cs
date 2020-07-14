@@ -22,24 +22,33 @@ namespace Нахождение_студентов_из_групп_по_номе�
             students.Add(new Student { Name = "Lev", GroupNumb = 3 });
             foreach (Student s in students)
                 Console.WriteLine($"Студент : {s.Name}, Группа: {s.GroupNumb}");
-            var selectedGroupNumb = from n in students // определил каждый объект в students
-                                    select n.GroupNumb; // выбрал объект GroupNumb
-            Console.WriteLine($"Введите интересующую группу из существующих {selectedGroupNumb.Max()}"); // передал максимальное значение GroupNumb
+            // определил каждый объект в students
+            var selectedGroupNumb = from n in students
+                                    // выбрал объект GroupNumb
+                                    select n.GroupNumb;
+            // передал максимальное значение GroupNumb
+            Console.WriteLine($"Введите интересующую группу из существующих {selectedGroupNumb.Max()}"); 
             var addGroupNumb = Convert.ToInt32(Console.ReadLine());
 
             IEnumerable<string> GetNameFilter(string studentName1, string studentName2)
             {
-                var filteredNameList = from l in students // определил каждый объект в students
-                                       where l.Name == studentName1 | l.Name == studentName2 // фильтр по критерию сравнения каждой строки Name с вводимым параметром и логического сложения строки Name со вторым вводимым параметром 
-                                       select l.Name; // выбрал объект, который вернул значение true 
+                // определил каждый объект в students
+                var filteredNameList = from l in students
+                                       // фильтр по критерию сравнения каждой строки Name с вводимым параметром и логического сложения строки Name со вторым вводимым параметром 
+                                       where l.Name == studentName1 | l.Name == studentName2
+                                       // выбрал объект, который вернул значение true 
+                                       select l.Name;
                 return filteredNameList; 
             }
 
             IEnumerable<int> GetNumbersFilter(int groupNumber)
             {
-                var selectedGroupNumb = from n in students // определил каждый объект в students
-                                        where n.GroupNumb == groupNumber // фильтр по критерию сравнения каждого целочисленного элемента с вводимым параметром
-                                        select n.GroupNumb; // выбрал объект, который вернул значение true
+                // определил каждый объект в students
+                var selectedGroupNumb = from n in students
+                                        // фильтр по критерию сравнения каждого целочисленного элемента с вводимым параметром
+                                        where n.GroupNumb == groupNumber
+                                        // выбрал объект, который вернул значение true
+                                        select n.GroupNumb;
                 return selectedGroupNumb;
             }
 
