@@ -18,91 +18,45 @@ namespace Нахождение_студентов_из_групп_по_номе�
             students.Add(new Student { Name = "Masha", GroupNumb = 2 });
             students.Add(new Student { Name = "Vanya", GroupNumb = 1 });
             students.Add(new Student { Name = "Marina", GroupNumb = 2 });
-            students.Add(new Student { Name = "Lilya", GroupNumb = 3 });
+            students.Add(new Student { Name = "baibek", GroupNumb = 99 });
             students.Add(new Student { Name = "Lev", GroupNumb = 3 });
+
             foreach (Student s in students)
                 Console.WriteLine($"Студент : {s.Name}, Группа: {s.GroupNumb}");
-            // определил каждый объект в students
-            var selectedGroupNumb = from n in students
-                                    // выбрал объект GroupNumb
-                                    select n.GroupNumb;
-            // передал максимальное значение GroupNumb
-            Console.WriteLine($"Введите интересующую группу из существующих {selectedGroupNumb.Max()}"); 
+            /// Функция для возвращения значений всех GroupNumb
+            IEnumerable<int> GetAllGroupNumbers()
+            {
+                var allGroupNumbers = from a in students
+                                      select a.GroupNumb;
+                return allGroupNumbers;
+            }
+            var getAllGroupNumbers = GetAllGroupNumbers();
+            Console.WriteLine("Список имеющихся групп:");
+            foreach (int i in getAllGroupNumbers.Distinct())
+                Console.Write($" {i}");
+
+            Console.WriteLine("\n Введите группу, по которой вы начнёте поиск: ");
             var addGroupNumb = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите букву для определения поиска студента: ");
+            var addFirstStringOfName = Console.ReadLine();
+            foreach (int i in getAllGroupNumbers.Distinct())
+            {
 
-            IEnumerable<string> GetNameFilter(string studentName1, string studentName2)
-            {
-                // определил каждый объект в students
-                var filteredNameList = from l in students
-                                       // фильтр по критерию сравнения каждой строки Name с вводимым параметром и логического сложения строки Name со вторым вводимым параметром 
-                                       where l.Name == studentName1 | l.Name == studentName2
-                                       // выбрал объект, который вернул значение true 
-                                       select l.Name;
-                return filteredNameList; 
-            }
+                if (addGroupNumb == i)
+                {
 
-            IEnumerable<int> GetNumbersFilter(int groupNumber)
-            {
-                // определил каждый объект в students
-                var selectedGroupNumb = from n in students
-                                        // фильтр по критерию сравнения каждого целочисленного элемента с вводимым параметром
-                                        where n.GroupNumb == groupNumber
-                                        // выбрал объект, который вернул значение true
-                                        select n.GroupNumb;
-                return selectedGroupNumb;
-            }
+                    foreach (Student s in students)
+                    {
 
-            if (addGroupNumb == 1)
-            {
-                Console.WriteLine($"Введите интересующую букву, с которой начинается имя ученика: ");
-                var addButtonName = Console.ReadLine();
-                if (addButtonName == "I")
-                {
-                    var getNameFilter = GetNameFilter("Ilya", null);
-                    foreach (string l in getNameFilter)
-                        Console.WriteLine($"Имя студента: {l}");
-                    var getNumbFilter = GetNumbersFilter(1);
-                    foreach (int s in getNumbFilter.Distinct())
-                        Console.WriteLine($"Группа студента: {s}");
-                }
-                else if (addButtonName == "V")
-                {
-                    var getNameFilter = GetNameFilter("Vanya", null);
-                    foreach (string l in getNameFilter)
-                        Console.WriteLine($"Имя студента: {l}");
-                    var getNumbFilter = GetNumbersFilter(1);
-                    foreach (int s in getNumbFilter.Distinct())
-                        Console.WriteLine($"Группа студента: {s}");
-                }
-            }
-            else if (addGroupNumb == 2)
-            {
-                Console.WriteLine($"Введите интересующую букву, с которой начинается имя ученика: ");
-                var addButtonName = Console.ReadLine();
-                if (addButtonName == "M")
-                {
-                    var getNameFilter = GetNameFilter("Masha", "Marina");
-                    foreach (string l in getNameFilter)
-                        Console.WriteLine($"Студент: {l}");
-                    var getNumbFilter = GetNumbersFilter(2);
-                    foreach (int s in getNumbFilter.Distinct())
-                        Console.WriteLine($"Группа студента: {s}");
-                }
-            }
-            else if (addGroupNumb == 3)
-            {
-                Console.WriteLine($"Введите интересующую букву, с которой начинается имя ученика: ");
-                var addButtonName = Console.ReadLine();
-                if (addButtonName == "L")
-                {
-                    var getNameFilter = GetNameFilter("Lev", "Lilya");
-                    foreach (string l in getNameFilter)
-                        Console.WriteLine($"Студент: {l}");
-                    var getNumbFilter = GetNumbersFilter(3);
-                    foreach (int s in getNumbFilter.Distinct())
-                        Console.WriteLine($"Группа студента: {s}");
+                        var firstStringItem = s.Name.FirstOrDefault().ToString();
+                        if (firstStringItem == addFirstStringOfName)
+                        {
+                            Console.WriteLine($"Имя - {s.Name} Группа - {s.GroupNumb}");
+                        }
+                    }
                 }
             }
         }
+
     }
 }
