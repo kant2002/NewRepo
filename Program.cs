@@ -35,23 +35,27 @@ namespace Нахождение_студентов_из_групп_по_номе�
 
             Console.WriteLine("\n Введите группу, по которой вы начнёте поиск: ");
             var addGroupNumb = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите букву для определения поиска студента: ");
-            var addFirstStringOfName = Console.ReadLine();
             foreach (int i in allGroupNumbers.Distinct())
             {
-
                 if (addGroupNumb == i)
                 {
+                    Console.WriteLine("Введите букву для определения поиска студента: ");
+                    var addFirstStringOfName = Console.ReadLine();
 
                     foreach (Student s in students)
                     {
-
+                        
                         var firstStringItem = s.Name.FirstOrDefault().ToString();
                         if (firstStringItem == addFirstStringOfName)
                         {
                             Console.WriteLine($"Имя - {s.Name} Группа - {s.GroupNumb}");
                         }
                     }
+                }
+                else
+                {
+                    Console.WriteLine("Такой группы не существует");
+                    break;
                 }
             }
         }
