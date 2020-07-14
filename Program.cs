@@ -22,24 +22,22 @@ namespace Нахождение_студентов_из_групп_по_номе�
             students.Add(new Student { Name = "Lev", GroupNumb = 3 });
 
             foreach (Student s in students)
-                Console.WriteLine($"Студент : {s.Name}, Группа: {s.GroupNumb}");
-            /// Функция для возвращения значений всех GroupNumb
-            IEnumerable<int> GetAllGroupNumbers()
             {
-                var allGroupNumbers = from a in students
-                                      select a.GroupNumb;
-                return allGroupNumbers;
+                Console.WriteLine($"Студент : {s.Name}, Группа: {s.GroupNumb}");
             }
-            var getAllGroupNumbers = GetAllGroupNumbers();
+            var allGroupNumbers = from a in students
+                                  select a.GroupNumb;
             Console.WriteLine("Список имеющихся групп:");
-            foreach (int i in getAllGroupNumbers.Distinct())
+            foreach (int i in allGroupNumbers.Distinct())
+            {
                 Console.Write($" {i}");
+            }
 
             Console.WriteLine("\n Введите группу, по которой вы начнёте поиск: ");
             var addGroupNumb = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Введите букву для определения поиска студента: ");
             var addFirstStringOfName = Console.ReadLine();
-            foreach (int i in getAllGroupNumbers.Distinct())
+            foreach (int i in allGroupNumbers.Distinct())
             {
 
                 if (addGroupNumb == i)
