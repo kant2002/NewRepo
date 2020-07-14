@@ -11,26 +11,14 @@ namespace Нахождение_студентов_из_групп_по_номе�
     }
     class Program
     {
-        static List<Student> GetStudents()
-        {
-            List<Student> students = new List<Student>();
-            students.Add(new Student { Name = "Ilya", GroupNumb = 1 });
-            students.Add(new Student { Name = "Masha", GroupNumb = 2 });
-            students.Add(new Student { Name = "Vanya", GroupNumb = 1 });
-            students.Add(new Student { Name = "Marina", GroupNumb = 2 });
-            students.Add(new Student { Name = "baibek", GroupNumb = 99 });
-            students.Add(new Student { Name = "Lev", GroupNumb = 3 });
-
-            return students;
-        }
         static void Main(string[] args)
         {
-            var getStudens = GetStudents();
-            foreach (Student s in getStudens)
+            var studens = GetStudents();
+            foreach (Student s in studens)
             {
                 Console.WriteLine($"Студент : {s.Name}, Группа: {s.GroupNumb}");
             }
-            var allGroupNumbers = from a in getStudens
+            var allGroupNumbers = from a in studens
                                   select a.GroupNumb;
             Console.WriteLine("\n Введите группу, по которой вы начнёте поиск: ");
             var addGroupNumb = Convert.ToInt32(Console.ReadLine());
@@ -41,7 +29,7 @@ namespace Нахождение_студентов_из_групп_по_номе�
                     Console.WriteLine("Введите букву для определения поиска студента: ");
                     var addFirstStringOfName = Console.ReadLine();
 
-                    foreach (Student s in getStudens)
+                    foreach (Student s in studens)
                     {
 
                         var firstStringItem = s.Name.FirstOrDefault().ToString();
@@ -58,6 +46,17 @@ namespace Нахождение_студентов_из_групп_по_номе�
                 }
             }
         }
+        static List<Student> GetStudents()
+        {
+            List<Student> students = new List<Student>();
+            students.Add(new Student { Name = "Ilya", GroupNumb = 1 });
+            students.Add(new Student { Name = "Masha", GroupNumb = 2 });
+            students.Add(new Student { Name = "Vanya", GroupNumb = 1 });
+            students.Add(new Student { Name = "Marina", GroupNumb = 2 });
+            students.Add(new Student { Name = "baibek", GroupNumb = 99 });
+            students.Add(new Student { Name = "Lev", GroupNumb = 3 });
 
+            return students;
+        }
     }
 }
