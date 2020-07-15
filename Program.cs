@@ -23,7 +23,7 @@ namespace Нахождение_студентов_из_групп_по_номе�
             var filtredGroupNumber = from f in studens
                                      where addGroupNumb == f.GroupNumb
                                      select f.GroupNumb;
-            foreach (int i in filtredGroupNumber)
+            foreach (int i in filtredGroupNumber.Distinct())
             {
                 if (addGroupNumb == i)
                 {
