@@ -18,22 +18,26 @@ namespace Нахождение_студентов_из_групп_по_номе�
             {
                 Console.WriteLine($"Студент : {s.Name}, Группа: {s.GroupNumb}");
             }
-            var allGroupNumbers = from a in studens
-                                  select a.GroupNumb;
             Console.WriteLine("\n Введите группу, по которой вы начнёте поиск: ");
             var addGroupNumb = Convert.ToInt32(Console.ReadLine());
-            foreach (int i in allGroupNumbers.Distinct())
+            var filtredGroupNumber = from f in studens
+                                     where addGroupNumb == f.GroupNumb
+                                     select f.GroupNumb;
+            foreach (int i in filtredGroupNumber)
             {
                 if (addGroupNumb == i)
                 {
                     Console.WriteLine("Введите букву для определения поиска студента: ");
-                    var addFirstStringOfName = Console.ReadLine();
-
+                    var addStringOfName = Console.ReadLine().Trim().ToUpper();
                     foreach (Student s in studens)
                     {
-
-                        var firstStringItem = s.Name.FirstOrDefault().ToString();
-                        if (firstStringItem == addFirstStringOfName)
+                        var startStringItem = s.Name.ToUpper().StartsWith(addStringOfName);
+                        var endStringItem = s.Name.ToUpper().EndsWith(addStringOfName);
+                        if (startStringItem == true)
+                        {
+                            Console.WriteLine($"Имя - {s.Name} Группа - {s.GroupNumb}");
+                        }
+                        else if(endStringItem == true)
                         {
                             Console.WriteLine($"Имя - {s.Name} Группа - {s.GroupNumb}");
                         }
