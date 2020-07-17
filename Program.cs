@@ -25,7 +25,7 @@ namespace Нахождение_студентов_из_групп_по_номе�
             {
                 var findSameNumb = addGroupNumb == studens[i].GroupNumb;
                 var dontContainNumber = addGroupNumb != studens[i].GroupNumb;
-                if (findSameNumb || !dontContainNumber)
+                if (findSameNumb && !dontContainNumber)
                 {
                     Console.WriteLine("Введите значение для поиска студента: ");
                     var addStringOfName = Console.ReadLine().Trim().ToUpper();
@@ -41,10 +41,9 @@ namespace Нахождение_студентов_из_групп_по_номе�
                         break;
                     }
                 }
-                if(!findSameNumb || dontContainNumber)
+                if(studens.Count - 1 == i && dontContainNumber)
                 {
                     Console.WriteLine("Такой группы нет");
-                    break;
                 }
             }
 
