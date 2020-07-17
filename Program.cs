@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Schema;
 
 namespace Нахождение_студентов_из_групп_по_номеру_группы_и_фамилии
 {
@@ -14,41 +15,39 @@ namespace Нахождение_студентов_из_групп_по_номе�
         static void Main(string[] args)
         {
             var studens = GetStudents();
-            foreach (Student s in studens)
+            for (int s = 0; s < studens.Count; s++)
             {
-                Console.WriteLine($"Студент : {s.Name}, Группа: {s.GroupNumb}");
+                Console.WriteLine($"Студент : {studens[s].Name}, Группа: {studens[s].GroupNumb}");
             }
             Console.WriteLine("\n Введите группу, по которой вы начнёте поиск: ");
             var addGroupNumb = Convert.ToInt32(Console.ReadLine());
-            var filtredGroupNumber = from f in studens
-                                     where addGroupNumb == f.GroupNumb
-                                     select f.GroupNumb;
-            foreach (int i in filtredGroupNumber.Distinct())
+            for (int i = 0; i < studens.Count; i++)
             {
-                if (addGroupNumb == i)
+                var findSameNumb = addGroupNumb == studens[i].GroupNumb;
+                var dontContainNumber = addGroupNumb != studens[i].GroupNumb;
+                if (findSameNumb || !dontContainNumber)
                 {
-                    Console.WriteLine("Введите букву для определения поиска студента: ");
+                    Console.WriteLine("Введите значение для поиска студента: ");
                     var addStringOfName = Console.ReadLine().Trim().ToUpper();
-                    foreach (Student s in studens)
+                    var filter = studens[i].Name.ToUpper().Contains(addStringOfName);
+                    if(filter == true)
                     {
-                        var startStringItem = s.Name.ToUpper().StartsWith(addStringOfName);
-                        var endStringItem = s.Name.ToUpper().EndsWith(addStringOfName);
-                        if (startStringItem == true)
-                        {
-                            Console.WriteLine($"Имя - {s.Name} Группа - {s.GroupNumb}");
-                        }
-                        else if(endStringItem == true)
-                        {
-                            Console.WriteLine($"Имя - {s.Name} Группа - {s.GroupNumb}");
-                        }
+                        Console.WriteLine($"Имя - {studens[i].Name} Группа - {studens[i].GroupNumb}");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Сочитаение символов не соответствует не одному студентом");
+                        break;
                     }
                 }
-                else if (addGroupNumb != i)
+                if(!findSameNumb || dontContainNumber)
                 {
-                    Console.WriteLine("Такой группы не существует");
+                    Console.WriteLine("Такой группы нет");
                     break;
                 }
             }
+
         }
         static List<Student> GetStudents()
         {
