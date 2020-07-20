@@ -1,3 +1,4 @@
+using System;
 using System.Xml.Schema;
 
 namespace Polindrom_of_Numbers
@@ -8,13 +9,14 @@ namespace Polindrom_of_Numbers
         {
             Console.WriteLine("Введите четырёхзначное число:");
             var addNumb = Console.ReadLine();
-            if (addNumb[0] == addNumb[3])
+            if (addNumb.Length == 4 && addNumb[0] == addNumb[3])
             {
-                Console.WriteLine("Пошла жара");
+                Console.WriteLine("Числа полиндромны");
             }
             else
             {
-                Console.WriteLine("Пошла, но не жара");
+                Console.WriteLine("Числа не полиндромны");
             }
         }
     }
+}
