@@ -1,0 +1,20 @@
+using System.Xml.Schema;
+
+namespace Polindrom_of_Numbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите четырёхзначное число:");
+            var addNumb = Console.ReadLine();
+            if (addNumb[0] == addNumb[3])
+            {
+                Console.WriteLine("Пошла жара");
+            }
+            else
+            {
+                Console.WriteLine("Пошла, но не жара");
+            }
+        }
+    }
