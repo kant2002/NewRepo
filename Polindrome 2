@@ -13,11 +13,15 @@ namespace Polindrom_of_Numbers
             {
                 if (addNumb[i] == addNumb[addNumb.Length - i - 1])
                 {
-                    Console.WriteLine("Полиндромны");
+                    if( i == 0 )
+                    {
+                        Console.WriteLine("Полиндромно");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Не полиндромны");
+                    Console.WriteLine("Не полиндромно");
+                    break;
                 }
             }
         }
