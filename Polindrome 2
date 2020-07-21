@@ -15,14 +15,15 @@ namespace Polindrom_of_Numbers
             for (int i = stringCenter; i >= 0 ; i--)
             {
                 isPalindrom = addNumb[i] == addNumb[stringLastIndex - i];
+                if(isPalindrom == false)
+                {
+                    Console.WriteLine("Не палендромно");
+                    break;
+                }
             }
             if(isPalindrom)
             {
                 Console.WriteLine("Палендромно");
-            }
-            else
-            {
-                Console.WriteLine("Не палендромно");
             }
 
         }
