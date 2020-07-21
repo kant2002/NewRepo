@@ -11,20 +11,20 @@ namespace Polindrom_of_Numbers
             var addNumb = Console.ReadLine();
             var stringCenter = addNumb.Length / 2 - 1;
             var stringLastIndex = addNumb.Length - 1;
-            bool result = false;
+            var isPalindrom = true;
             for (int i = stringCenter; i >= 0 ; i--)
             {
-                var isPalindrom = addNumb[i] == addNumb[stringLastIndex - i];
+                isPalindrom = addNumb[i] == addNumb[stringLastIndex - i];
                 if (isPalindrom)
                 {
-                    result = true;
+                    isPalindrom = true;
                 }
                 else
                 {
-                    result = false;
+                    isPalindrom = false;
                 }
             }
-            if(result == true)
+            if(isPalindrom)
             {
                 Console.WriteLine("Полиндромно");
             }
