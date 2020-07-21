@@ -12,7 +12,7 @@ namespace Polindrom_of_Numbers
             var stringCenter = addNumb.Length / 2 - 1;
             var stringLastIndex = addNumb.Length - 1;
             var isPalindrom = true;
-            for (int i = 0; i <= stringLastIndex; i++)
+            for (int i = 0; i <= stringCenter; i++)
             {
                 if(addNumb[i] != addNumb[stringLastIndex - i])
                 {
