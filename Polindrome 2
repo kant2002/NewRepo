@@ -14,7 +14,6 @@ namespace Polindrom_of_Numbers
             var isPalindrom = true;
             for (int i = stringCenter; i >= 0 ; i--)
             {
-                isPalindrom = addNumb[i] == addNumb[stringLastIndex - i];
                 if(addNumb[i] != addNumb[stringLastIndex - i])
                 {
                     isPalindrom = false;
