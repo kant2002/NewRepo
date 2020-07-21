@@ -9,21 +9,23 @@ namespace Polindrom_of_Numbers
         {
             Console.WriteLine("Введите четырёхзначное, или шестизначное, или восьмизначное число для проверки на полиндромность:");
             var addNumb = Console.ReadLine();
-            for (int i = addNumb.Length / 2 - 1; i >= 0; i--)
+            var stringCenter = addNumb.Length / 2 - 1;
+            var stringLastIndex = addNumb.Length - 1;
+            
+
+            for (int i = stringCenter; i >= 0 ; i--)
             {
-                if (addNumb[i] == addNumb[addNumb.Length - i - 1])
+                var booleanIndex = addNumb[i] == addNumb[stringLastIndex - i];
+                if (booleanIndex)
                 {
-                    if( i == 0 )
-                    {
-                        Console.WriteLine("Полиндромно");
-                    }
+                    Console.WriteLine("Палиндромно");
                 }
                 else
                 {
-                    Console.WriteLine("Не полиндромно");
-                    break;
+                    Console.WriteLine("Не палиндромно");
                 }
             }
+
         }
     }
 }
