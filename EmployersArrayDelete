@@ -1,0 +1,45 @@
+using System;
+using System.Collections;
+using System.Linq;
+
+namespace Задание_с_массивом_строк
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите первую букву имени сотрудников, которые не требуются в распечатке списка");
+            var firstNameElement = Convert.ToChar(Console.ReadLine().ToUpper());
+            string[] employersArray = new string[] { "Andrey", "Masha", "Marat", "Lev", "Marina", "Anton", "Leonid" };
+            string[] filtredArray;
+            string name;
+            for (int i = 0; i <= employersArray.Length - 1; i++)
+            {
+                for (int f = i + 1; f < employersArray.Length; f++)
+                {
+                    name = employersArray[i];
+                    if (name[0] == firstNameElement)
+                    {
+                        employersArray[i] = employersArray[f];
+                        employersArray[f] = name;
+                    }
+                }
+            }
+            int count = 0;
+            for( int s = 0; s <= employersArray.Length - 1; s++)
+            {
+                name = employersArray[s];
+                if(name[0] == firstNameElement)
+                {
+                    count++;
+                }
+            }
+            filtredArray = new string[employersArray.Length - count];
+            for (int e = 0; e <= filtredArray.Length - 1; e++)
+            {
+                filtredArray[e] = employersArray[e];
+                Console.WriteLine($"{filtredArray[e]}");
+            }
+        }
+    }
+}
