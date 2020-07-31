@@ -13,10 +13,12 @@ namespace TestingEducationCode
         static void GetFunction()
         {
             var value = Convert.ToInt32(Console.ReadLine());
-            int spaces = value;
-            for (int i = 1; i <= value; i++)
+            int spaces = value - 1;
+            int[] count = new int[value];
+            int elements = 1;
+            for (int i = 0; i <= count.Length - 1; i++)
             {
-                for( int k = 1; k <= i + 3; k ++)
+                for( int k = 0; k <= elements; k ++)
                 {
                     if( k != spaces && k < spaces)
                     {
@@ -28,6 +30,7 @@ namespace TestingEducationCode
                     }
                 }
                 spaces--;
+                elements = elements + 2; 
                 Console.WriteLine();
             }
         }
