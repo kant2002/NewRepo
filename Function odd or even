@@ -1,0 +1,58 @@
+using System;
+
+namespace TestingEducationCode
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите значение функции n");
+            GetFunction();
+        }
+        static void GetFunction()
+        {
+            var value = Convert.ToInt64(Console.ReadLine());
+            var secondValue = value;
+            var count = 0;
+            do
+            {
+                count++;
+                if (value % 2 == 0)
+                {
+                    var even = value / 2;
+                    value = even;
+                }
+                else
+                {
+                    var odd = 3 * value + 1;
+                    value = odd;
+                }
+            }
+            while (value != 1);
+
+            long[] result = new long[count];
+            int i = 0;
+            do
+            {
+                if (secondValue % 2 == 0)
+                {
+                    var even = secondValue / 2;
+                    result[i] = even;
+                    Console.WriteLine(result[i]);
+                    i++;
+                    secondValue = even;
+                }
+                else
+                {
+                    var odd = 3 * secondValue + 1;
+                    result[i] = odd;
+                    Console.WriteLine(result[i]);
+                    i++;
+                    secondValue = odd;
+                }
+                
+            }
+            while (secondValue != 1);
+        }
+    }
+}
