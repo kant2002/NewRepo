@@ -44,7 +44,31 @@ namespace TestingEducationCode
             }
             else
             {
-                Console.WriteLine("Значение, которое вы ввели не удовлетворяет условию");
+                int i = 1;
+                int spaces = (count.Length) / 2;
+                for (; i <= count.Length; i++)
+                {
+                    for (int k = 0; k <= count.Length - spaces - 1; k++)
+                    {
+                        if (k < spaces)
+                        {
+                            Console.Write(" ");
+                        }
+                        else
+                        {
+                            Console.Write("*");
+                        }
+                    }
+                    if (i >= (count.Length) / 2)
+                    {
+                        spaces++;
+                    }
+                    else
+                    {
+                        spaces--;
+                    }
+                    Console.WriteLine();
+                }
             }
             }
         }
