@@ -48,7 +48,7 @@ namespace TestingEducationCode
                 int spaces = (count.Length) / 2;
                 for (; i <= count.Length; i++)
                 {
-                    for (int k = 0; k <= count.Length - spaces - 1; k++)
+                    for (int k = 0; k <= count.Length - spaces; k++)
                     {
                         if (k < spaces)
                         {
