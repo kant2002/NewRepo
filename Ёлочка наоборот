@@ -23,7 +23,7 @@ namespace TestingEducationCode
                     {
                         Console.Write(" ");
                     }
-                    if ( k >= spaces )
+                    else
                     {
                         Console.Write('*');
                     }
