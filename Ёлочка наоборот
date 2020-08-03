@@ -19,7 +19,7 @@ namespace TestingEducationCode
             {
                 for( int k = 0; k <= count.Length - 1 + i; k ++)
                 {
-                    if( k != spaces && k < spaces)
+                    if( k < spaces )
                     {
                         Console.Write(" ");
                     }
