@@ -1,0 +1,36 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace TestingEducationCode
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите значение функции n");
+            GetFunction();
+        }
+        static void GetFunction()
+        {
+            var value = Convert.ToInt32(Console.ReadLine());
+            int spaces = 0;
+            int[] count = new int[value];
+            for (int i = count.Length - 1; i >= 0; i--)
+            {
+                for( int k = 0; k <= count.Length - 1 + i; k ++)
+                {
+                    if( k != spaces && k < spaces)
+                    {
+                        Console.Write(" ");
+                    }
+                    if ( k >= spaces )
+                    {
+                        Console.Write('*');
+                    }
+                }
+                spaces++;
+                Console.WriteLine();
+            }
+        }
+    }
+}
