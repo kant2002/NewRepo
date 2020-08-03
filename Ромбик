@@ -1,0 +1,51 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace TestingEducationCode
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите нечетное значение для ромбика");
+            GetFunction();
+        }
+        static void GetFunction()
+        {
+            var value = Convert.ToInt32(Console.ReadLine());
+            int[] count = new int[value];
+            if (value % 2 == 1)
+            {
+                int i = 0;
+                int spaces = (count.Length - 1) / 2;
+                for (; i <= count.Length - 1; i++)
+                {
+                    for (int k = 0; k <= count.Length - spaces - 1; k++)
+                    {
+                        if (k < spaces)
+                        {
+                            Console.Write(" ");
+                        }
+                        else
+                        {
+                            Console.Write("*");
+                        }
+                    }
+                    if (i >= (count.Length - 1) / 2)
+                    {
+                        spaces++;
+                    }
+                    else
+                    {
+                        spaces--;
+                    }
+                    Console.WriteLine();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Значение, которое вы ввели не удовлетворяет условию");
+            }
+            }
+        }
+    }
