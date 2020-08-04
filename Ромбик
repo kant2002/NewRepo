@@ -8,68 +8,36 @@ namespace TestingEducationCode
         static void Main(string[] args)
         {
             Console.WriteLine("Введите нечетное значение для ромбика");
-            var value = Convert.ToInt32(Console.ReadLine());
-            int[] count = new int[value];
-            GetFunction(count);
+            GetRomb();
         }
-        static void GetFunction(int[] romb)
+        static void GetRomb()
         {
-            if (romb.Length % 2 == 1)
+            var rombSideLength = Convert.ToInt32(Console.ReadLine());
+            var spaces = rombSideLength - 1;
+            for(int i = 0; i <= 2*rombSideLength-2; i++)
             {
-                int i = 0;
-                int spaces = (romb.Length - 1) / 2;
-                for (; i <= romb.Length - 1; i++)
+                for(int k = 0; k <= 2*rombSideLength - 2 - spaces; k++)
                 {
-                    for (int k = 0; k <= romb.Length - spaces - 1; k++)
+                    if(k <= spaces - 1)
                     {
-                        if (k < spaces)
-                        {
-                            Console.Write(" ");
-                        }
-                        else
-                        {
-                            Console.Write("*");
-                        }
-                    }
-                    if (i >= (romb.Length - 1) / 2)
-                    {
-                        spaces++;
+                        Console.Write(" ");
                     }
                     else
                     {
-                        spaces--;
+                        Console.Write("*");
                     }
-                    Console.WriteLine();
                 }
-            }
-            else
-            {
-                int i = 1;
-                int spaces = (romb.Length) / 2;
-                for (; i <= romb.Length; i++)
+                if(i >= (2*rombSideLength - 2)/2)
                 {
-                    for (int k = 0; k <= romb.Length - spaces; k++)
-                    {
-                        if (k < spaces)
-                        {
-                            Console.Write(" ");
-                        }
-                        else
-                        {
-                            Console.Write("*");
-                        }
-                    }
-                    if (i >= (romb.Length) / 2)
-                    {
-                        spaces++;
-                    }
-                    else
-                    {
-                        spaces--;
-                    }
-                    Console.WriteLine();
+                    spaces++;
                 }
+                else
+                {
+                    spaces--;
+                }
+                Console.WriteLine();
             }
-            }
+
         }
     }
+}
