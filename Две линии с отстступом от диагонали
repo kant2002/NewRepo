@@ -1,0 +1,36 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace TestingEducationCode
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите нечетное значение для ромбика");
+            GetLines();
+        }
+        static void GetLines()
+        {
+            var squareEdge = Convert.ToInt32(Console.ReadLine());
+            for(int i = 0; i <= squareEdge - 1; i ++)
+            {
+                
+                for (int k = 0; k <= squareEdge - 1; k ++)
+                {
+                    var line1 = 1 + k;
+                    var line2 = 1 + i;
+                    if( k != line2 && i != line1)
+                    {
+                        Console.Write(" ");
+                    }
+                    else
+                    {
+                        Console.Write("*");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
