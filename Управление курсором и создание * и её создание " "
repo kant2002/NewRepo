@@ -11,6 +11,7 @@ namespace ConsoleApp1
         static int xCoord = 0;
         static int yCoord = 0;
         static int[] stars = new int[100];
+        static bool isStarDisplayed = false;
         static void MoveCursorDown()
         {
             Console.SetCursorPosition(xCoord, ++yCoord);
@@ -27,7 +28,7 @@ namespace ConsoleApp1
         {
             Console.SetCursorPosition(--xCoord, yCoord);
         }
-        static void CreateNewObject()
+        static void ToggleStar()
         {
             for (int j = 0; j <= stars.Length - 1; j++)
             {
@@ -37,6 +38,7 @@ namespace ConsoleApp1
                     xCoord++;
                     Console.SetCursorPosition(--xCoord, yCoord);
                     stars[10 * xCoord + yCoord] = 1;
+                    isStarDisplayed = true;
                     break;
                 }
                 else
@@ -45,10 +47,23 @@ namespace ConsoleApp1
                     xCoord++;
                     Console.SetCursorPosition(--xCoord, yCoord);
                     stars[10 * xCoord + yCoord] = 0;
+                    isStarDisplayed = false;
                     break;
                 }
 
             }
+        }
+        static bool IsStarDisplayed(int xCoord, int yCoord)
+        {
+            if (isStarDisplayed == false)
+            {
+                ToggleStar();
+            }
+            else
+            {
+                ToggleStar();
+            }
+            return isStarDisplayed;
         }
         static void Main(string[] args)
         {
@@ -86,7 +101,7 @@ namespace ConsoleApp1
                         break;
 
                     case ConsoleKey.Spacebar:
-                        CreateNewObject();
+                        IsStarDisplayed(xCoord, yCoord);
                         break;
                 }
             }
