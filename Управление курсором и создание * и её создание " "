@@ -47,7 +47,7 @@ namespace ConsoleApp1
                 }
             }
         }
-        static bool IsStarDysplayed(int xCoord, int yCoord)
+        static bool IsStarDisplayed(int xCoord, int yCoord)
         {
             if(stars[10 * xCoord + yCoord] == 0)
             {
