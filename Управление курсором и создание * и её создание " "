@@ -31,7 +31,7 @@ namespace ConsoleApp1
         {
             for (int j = 0; j <= stars.Length - 1; j++)
             {
-                if (IsStarDysplayed(xCoord,yCoord))
+                if (IsStarDisplayed(xCoord,yCoord))
                 {
                     Console.Write("*");
                     Console.SetCursorPosition(xCoord, yCoord);
