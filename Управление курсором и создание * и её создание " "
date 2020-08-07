@@ -8,11 +8,50 @@ namespace ConsoleApp1
 {
     class Program
     {
+        static int xCoord = 0;
+        static int yCoord = 0;
+        static int[] stars = new int[100];
+        static void MoveCursorDown()
+        {
+            Console.SetCursorPosition(xCoord, ++yCoord);
+        }
+        static void MoveCursorUp()
+        {
+            Console.SetCursorPosition(xCoord, --yCoord);
+        }
+        static void MoveCursorRight()
+        {
+            Console.SetCursorPosition(++xCoord, yCoord);
+        }
+        static void MoveCursorLeft()
+        {
+            Console.SetCursorPosition(--xCoord, yCoord);
+        }
+        static void CreateNewObject()
+        {
+            for (int j = 0; j <= stars.Length - 1; j++)
+            {
+                if (stars[10 * xCoord + yCoord] == 0)
+                {
+                    Console.Write("*");
+                    xCoord++;
+                    Console.SetCursorPosition(--xCoord, yCoord);
+                    stars[10 * xCoord + yCoord] = 1;
+                    break;
+                }
+                else
+                {
+                    Console.Write(" ");
+                    xCoord++;
+                    Console.SetCursorPosition(--xCoord, yCoord);
+                    stars[10 * xCoord + yCoord] = 0;
+                    break;
+                }
+
+            }
+        }
         static void Main(string[] args)
         {
-            int xCoord = 0;
-            int yCoord = 0;
-            int[] stars = new int[100];
             for (int i = 0; i >= 0; i++)
             {
                 var nextChar = Console.ReadKey(true);
@@ -21,52 +60,33 @@ namespace ConsoleApp1
                     case ConsoleKey.UpArrow:
                         if (yCoord > 0)
                         {
-                            Console.SetCursorPosition(xCoord, --yCoord);
+                            MoveCursorUp();
                         }
                         break;
 
                     case ConsoleKey.LeftArrow:
                         if (xCoord > 0)
                         {
-                            Console.SetCursorPosition(--xCoord, yCoord);
+                            MoveCursorLeft();
                         }
                         break;
 
                     case ConsoleKey.DownArrow:
-                        if(yCoord <= 8)
+                        if (yCoord <= 8)
                         {
-                            Console.SetCursorPosition(xCoord, ++yCoord);
+                            MoveCursorDown();
                         }
                         break;
 
                     case ConsoleKey.RightArrow:
-                        if(xCoord <= 8)
+                        if (xCoord <= 8)
                         {
-                            Console.SetCursorPosition(++xCoord, yCoord);
+                            MoveCursorRight();
                         }
                         break;
 
                     case ConsoleKey.Spacebar:
-                        for(int j = 0; j <= stars.Length - 1; j++)
-                        {
-                            if( stars[10*xCoord + yCoord] == 0 )
-                            {
-                                Console.Write("*");
-                                xCoord++;
-                                Console.SetCursorPosition(--xCoord, yCoord);
-                                stars[10 * xCoord + yCoord] = 1;
-                                break;
-                            }
-                            else
-                            {
-                                Console.Write(" ");
-                                xCoord++;
-                                Console.SetCursorPosition(--xCoord, yCoord);
-                                stars[10 * xCoord + yCoord] = 0;
-                                break;
-                            }
-
-                        }
+                        CreateNewObject();
                         break;
                 }
             }
