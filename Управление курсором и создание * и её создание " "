@@ -11,6 +11,7 @@ namespace ConsoleApp1
         static int xCoord = 0;
         static int yCoord = 0;
         static int[] stars = new int[100];
+        static int star = 0;
         static void MoveCursorDown()
         {
             Console.SetCursorPosition(xCoord, ++yCoord);
@@ -49,27 +50,28 @@ namespace ConsoleApp1
         }
         static bool IsStarCorrespondsToLine( int xCoord, int yCoord )
         {
-            if (xCoord == 0 && yCoord == 0 && IsStarDisplayed(xCoord + 1, yCoord + 1) 
+            if( star > 0)
+            {
+                if (xCoord == 0 && yCoord == 0 && IsStarDisplayed(xCoord + 1, yCoord + 1)
                 || yCoord == 9 && xCoord == 0 && IsStarDisplayed(xCoord + 1, yCoord - 1)
                 || xCoord == 9 && yCoord == 0 && IsStarDisplayed(xCoord - 1, yCoord + 1)
                 || xCoord == 9 && yCoord == 9 && IsStarDisplayed(xCoord - 1, yCoord - 1))
-            {
-                return true;
-            }
-            if (yCoord > 0 && yCoord <= 8 && xCoord == 0 && IsStarDisplayed(xCoord + 1, yCoord - 1)
-                && IsStarDisplayed(xCoord + 1, yCoord + 1) || xCoord > 0 && xCoord <= 8 && yCoord == 0 
-                && IsStarDisplayed(xCoord - 1, yCoord + 1) && IsStarDisplayed(xCoord + 1, yCoord + 1)
-                || xCoord == 9 && yCoord > 0 && yCoord <= 8 && IsStarDisplayed(xCoord - 1, yCoord + 1)
-                && IsStarDisplayed(xCoord - 1, yCoord - 1)|| yCoord == 9 && xCoord > 0 && xCoord <= 8 
-                && IsStarDisplayed(xCoord + 1, yCoord - 1) && IsStarDisplayed(xCoord - 1, yCoord - 1))
-            {
-                return true;
-            }
-            if (xCoord > 0 && yCoord > 0 && xCoord <= 8 && yCoord <= 8 && IsStarDisplayed(xCoord - 1, yCoord - 1)
-                && IsStarDisplayed(xCoord + 1, yCoord + 1) && IsStarDisplayed(xCoord - 1, yCoord + 1) 
-                && IsStarDisplayed(xCoord + 1, yCoord - 1))
-            {
-                return true;
+                {
+                    return true;
+                }
+                if (yCoord > 0 && yCoord <= 8 && xCoord == 0 && IsStarDisplayed(xCoord + 1, yCoord - 1) && IsStarDisplayed(xCoord + 1, yCoord + 1)
+                    || xCoord > 0 && xCoord <= 8 && yCoord == 0 && IsStarDisplayed(xCoord - 1, yCoord + 1) && IsStarDisplayed(xCoord + 1, yCoord + 1)
+                    || xCoord == 9 && yCoord > 0 && yCoord <= 8 && IsStarDisplayed(xCoord - 1, yCoord + 1) && IsStarDisplayed(xCoord - 1, yCoord - 1)
+                    || yCoord == 9 && xCoord > 0 && xCoord <= 8 && IsStarDisplayed(xCoord + 1, yCoord - 1) && IsStarDisplayed(xCoord - 1, yCoord - 1))
+                {
+                    return true;
+                }
+                if (xCoord > 0 && yCoord > 0 && xCoord <= 8 && yCoord <= 8 && IsStarDisplayed(xCoord - 1, yCoord - 1)
+                    && IsStarDisplayed(xCoord + 1, yCoord + 1) && IsStarDisplayed(xCoord - 1, yCoord + 1)
+                    && IsStarDisplayed(xCoord + 1, yCoord - 1))
+                {
+                    return true;
+                }
             }
             return false;
         }
@@ -78,8 +80,10 @@ namespace ConsoleApp1
             var currentStarCoord = stars[10 * xCoord + yCoord];
             if (currentStarCoord == 0)
             {
+                ++star;
                 return true;
             }
+            --star;
             return false;
         }
         static void Main(string[] args)
