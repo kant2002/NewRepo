@@ -30,38 +30,36 @@ namespace ConsoleApp1
         static void ToggleStar()
         {
             if (IsStarCorrespondsToLine() && IsStarDisplayed(xCoord, yCoord))
-                {
-                    Console.Write("*");
-                    Console.SetCursorPosition(xCoord, yCoord);
-                    stars[10 * xCoord + yCoord] = 1;
-                }
-                else
-                {
-                    Console.Write(" ");
-                    Console.SetCursorPosition(xCoord, yCoord);
-                    stars[10 * xCoord + yCoord] = 0;
-                }
+            {
+                Console.Write("*");
+                Console.SetCursorPosition(xCoord, yCoord);
+                stars[10 * xCoord + yCoord] = 1;
+                return;
+            }
+            Console.Write(" ");
+            Console.SetCursorPosition(xCoord, yCoord);
+            stars[10 * xCoord + yCoord] = 0;
         }
         static bool IsStarCorrespondsToLine()
         {
             var star = 0;
             if (xCoord <= 8 && yCoord <= 8)
             {
-                if(!IsStarDisplayed(xCoord + 1, yCoord + 1))
+                if (!IsStarDisplayed(xCoord + 1, yCoord + 1))
                 {
                     ++star;
                 }
             }
             if (xCoord > 0 && yCoord <= 8)
             {
-                if(!IsStarDisplayed(xCoord - 1, yCoord + 1))
+                if (!IsStarDisplayed(xCoord - 1, yCoord + 1))
                 {
                     ++star;
                 }
             }
             if (xCoord > 0 && yCoord > 0)
             {
-                if(!IsStarDisplayed(xCoord - 1, yCoord - 1))
+                if (!IsStarDisplayed(xCoord - 1, yCoord - 1))
                 {
                     ++star;
                 }
@@ -73,7 +71,7 @@ namespace ConsoleApp1
                     ++star;
                 }
             }
-            if(star == 0)
+            if (star == 0)
             {
                 return true;
             }
