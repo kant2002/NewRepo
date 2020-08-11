@@ -47,40 +47,28 @@ namespace ConsoleApp1
             var star = 0;
             if (xCoord <= 8 && yCoord <= 8)
             {
-                if(IsStarDisplayed(xCoord + 1, yCoord + 1))
-                {
-                }
-                else
+                if(!IsStarDisplayed(xCoord + 1, yCoord + 1))
                 {
                     ++star;
                 }
             }
             if (xCoord > 0 && yCoord <= 8)
             {
-                if(IsStarDisplayed(xCoord - 1, yCoord + 1))
-                {
-                }
-                else
+                if(!IsStarDisplayed(xCoord - 1, yCoord + 1))
                 {
                     ++star;
                 }
             }
             if (xCoord > 0 && yCoord > 0)
             {
-                if(IsStarDisplayed(xCoord - 1, yCoord - 1))
-                {
-                }
-                else
+                if(!IsStarDisplayed(xCoord - 1, yCoord - 1))
                 {
                     ++star;
                 }
             }
             if (xCoord < 9 && yCoord > 0)
             {
-                if (IsStarDisplayed(xCoord + 1, yCoord - 1))
-                {
-                }
-                else
+                if (!IsStarDisplayed(xCoord + 1, yCoord - 1))
                 {
                     ++star;
                 }
