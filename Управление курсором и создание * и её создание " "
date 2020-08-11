@@ -89,10 +89,7 @@ namespace ConsoleApp1
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
         static bool IsStarDisplayed(int xCoord, int yCoord)
         {
